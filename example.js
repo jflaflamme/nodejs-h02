@@ -4,7 +4,7 @@
   Copy/paste:  1203292316,0031698765432,GPRMC,211657.000,A,5213.0247,N,00516.7757,E,0.00,273.30,290312,,,A*62,F,imei:123456789012345,123
 */
 
-var tk102 = require ('tk102');
+var h02 = require ('h02');
 var net = require ('net');
 
 var gps = '1203292316,0031698765432,GPRMC,211657.000,A,5213.0247,N,00516.7757,E,0.00,273.30,290312,,,A*62,F,imei:123456789012345,123';
@@ -18,10 +18,10 @@ function output (data) {
 }
 
 // report only track event to console
-tk102.on ('track', output);
+h02.on ('track', output);
 
 // wait for server to be ready
-tk102.on ('listening', function (lst) {
+h02.on ('listening', function (lst) {
   var client;
 
   console.log ('TK102 server is ready');
@@ -39,6 +39,6 @@ tk102.on ('listening', function (lst) {
 });
 
 // start server
-tk102.createServer ({
+h02.createServer ({
   port: 1337
 });
